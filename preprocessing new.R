@@ -5,18 +5,18 @@ dim(data)
 summary(data)
 
 
-data = na.omit(data)    #delete the missing value
+#data = na.omit(data)    #delete the missing value
 
-mean(data$age, na.rm = TRUE) #na.rm will remove the missing vslues
+#mean(data$age, na.rm = TRUE) #na.rm will remove the missing vslues
 
 
-data$price
+#data$price
 
 data$age[is.na(data$age)] <- mean(data$age,na.rm = TRUE)    #missing values
 
-sum(is.na(data$age))
+#sum(is.na(data$age))
 
-sum(is.na(data$bathroom))
+#sum(is.na(data$bathroom))
 
 data$bathroom <- NULL    #delete the drop column
 head(data)
@@ -82,3 +82,42 @@ data$age[data$age > upper] <- upper
 boxplot(data$age)
 
 data      #after preprocess
+
+
+# Convert x to a factor
+data$status <- as.numeric(factor(data$status))
+
+# Print the factor
+head(data$status)
+
+
+data$location <- as.numeric(factor((data$location)))
+head(data$location)
+
+
+data$builder <- as.numeric(factor((data$builder)))
+head(data$builder)
+
+head(data)
+
+model = lm(data$price ~ data$area+data$status+data$bhk+data$age+data$location+data$builder,data = data)
+
+summary(model)
+
+
+residuals <- data$price - predict(model)
+
+mse <- mean(residuals^2)
+
+
+rmse <- sqrt(mse)
+
+
+mae <- mean(abs(residuals))
+
+mse
+rmse
+mae
+
+summary(model)$r.squared*100
+
