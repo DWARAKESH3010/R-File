@@ -121,3 +121,26 @@ mae
 
 summary(model)$r.squared*100
 
+
+# Create a dataframe with some missing values
+my_dataframe <- data.frame(
+  A = c(1, 2, NA, 4),
+  B = c(NA, 5, 6, 7),
+  C = c(8, 9, 10, NA)
+)
+
+# Display the dataframe
+print(my_dataframe)
+
+# Locate missing values in the dataframe
+missing_indices_df <- is.na(my_dataframe)
+
+# Display the logical matrix indicating missing values
+print(missing_indices_df)
+
+# Get row and column indices of missing values
+missing_rows_cols <- which(missing_indices_df)
+
+# Display the row and column indices of missing values
+cat("Missing values are located at:\n")
+print(missing_rows_cols)
