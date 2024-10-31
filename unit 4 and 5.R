@@ -44,7 +44,7 @@ plot(data$price,predict(model))
 
 abline(model)
 
-boxplot(data$price,factor(data$location))
+boxplot(price~bhk,factor(data$location))
 data$location
 
 hist(data$area)
