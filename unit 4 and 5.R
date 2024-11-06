@@ -32,11 +32,13 @@ df1 <- data.frame(
   colum3 = seq(10, 100, by = 10),
   colum4 = c(25, 30, 10, 35, 28, 40, 31, 24, 29, 33)
 )
-df1
+colnames(df1)[1] <- "firstcol"
 
 df2 = merge(x = df,y = df1,by = "col1")
 print(df2)
 
+
+class.df1$col1
 
 
 #unit 5
@@ -54,3 +56,14 @@ pairs(data[ c("price", "bhk", "area")],
       main = "Pairwise Scatterplots",
       pch = 19, 
       col = "blue")
+
+
+
+
+
+
+
+li = list(a = 1:4,b = 4:8)
+lapply(li,sum)
+val = scan(n = 3)
+val
